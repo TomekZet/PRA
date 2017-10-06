@@ -7,13 +7,11 @@ public class HelloWorld {
     final static Logger logger = Logger.getLogger(HelloWorld.class);
 
     public static void main(String [ ] args) {
-        System.out.println("Hello World");
+        System.out.println("Hello World xd");
 
         logger.info("hej info");
 
         logger.debug("hej debug");
-
-        logger.debug("hej ho");
     }
 }
 
