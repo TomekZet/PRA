@@ -12,6 +12,8 @@ public class HelloWorld {
         logger.info("hej info");
 
         logger.debug("hej debug");
+
+        logger.debug("hej ho");
     }
 }
 
