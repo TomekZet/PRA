@@ -1,2 +1,2 @@
-before_script: cd PracowniaProgramowania
+before_script: cd PracowaniaProgramowania
 language: java
