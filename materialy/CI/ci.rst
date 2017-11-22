@@ -68,7 +68,7 @@ Sprawdź poprawność składniową stworzonego w poprzednim zadaniu pliku.
 
 Możesz to zrobić na `dwa sposoby <https://docs.travis-ci.com/user/travis-lint>`_.
 
-Łatwieszy z nich to uzycie narzędzie dostępnego online: `Travis WebLint <http://lint.travis-ci.org/>`_
+Łatwieszy z nich to użycie narzędzia dostępnego online: `Travis WebLint <http://lint.travis-ci.org/>`_
 
 ~~~~~~~~~
 Zadanie 4
@@ -81,4 +81,4 @@ Sprawdź na głównej stronie Travis (po zalogowaniu) jak buduje się Twój proj
 Zadanie 5
 ~~~~~~~~~
 Dodaj do pliku README w swoim repozytorim odznakę Travis, która pokazuje w README twojego projektu na GitHub aktualny status na Travis.
-Skorzystaj z `tej instrukcji <https://docs.travis-ci.com/user/status-images/>`_
+Skorzystaj z `tej instrukcji <https://docs.travis-ci.com/user/status-images/>`_ wybierając np. Markdown jako format wyjściowy (jeśli wybierzesz Markdown zmień nazwę pliku README na README.md)
