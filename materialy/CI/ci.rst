@@ -3,7 +3,7 @@ Pracownia Programowania
 =======================
 
 --------------------
-Continous Interation
+Continous Integration
 --------------------
 
 .. contents::
@@ -27,9 +27,9 @@ Zapewnia budowanie i testowanie (za pomocą testów jednostkowych) projektu auto
 ~~~~~~~~~
 Zadanie 1
 ~~~~~~~~~
- 1. Zaloguj się na `travis-ci.org <travis-ci.org>`_ za pomocą swojego konta GitHub.
- 2. Przyznaj usłudze Travis dostęp do swojego konta na GitHubie.
- 3. Będąc zalogowanym na konto Travis, przejdź do ustawień i aktywuj Travis CI dla swojego reopozytorium z Pracowni Programowania (kliknij na nazwę swojego konta w prawym górnym rogu i wybierz "Accounts" )
+1. Zaloguj się na `travis-ci.org <travis-ci.org>`_ za pomocą swojego konta GitHub.
+2. Przyznaj usłudze Travis dostęp do swojego konta na GitHubie.
+3. Będąc zalogowanym na konto Travis, przejdź do ustawień i aktywuj Travis CI dla swojego reopozytorium z Pracowni Programowania (kliknij na nazwę swojego konta w prawym górnym rogu i wybierz "Accounts" )
  
 Możesz skorzystać z `Getting started <https://docs.travis-ci.com/user/getting-started>`_
 
