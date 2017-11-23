@@ -20,6 +20,23 @@ Jako kontener aplikacji jest serwerem, który umożliwia uruchamianie aplikacji 
 
 Dokumentacja Tomcata: `<https://tomcat.apache.org/tomcat-8.5-doc/introduction.html>`_
 
+~~~~~~~
+Pojęcia
+~~~~~~~
+
+**Document root**
+    główny katalog aplikacji webowej gdzie znajdują się jej zasoby
+
+**Context path**
+    relatywna ścieżka do zasobów serwera.
+
+    Na przykład, jeżeli umieścimy aplikację webową w katalogu $CATALINA_HOMEwebappsmyapp , to będziemy mogli się do niej dostać poprzez link URL http://localhost/myapp, a jej context path będzie równy /myapp.
+
+**WAR**
+    rozszerzenie pliku pakietu zawierającego aplikację webową w formacie ZIP (skrót od Web Archive). Zazwyczaj aplikacje Javowe są pakowane jako WAR przez deploymentem. Zwykle plik ten tworzony jest przez środowisko programistyczne.
+
+    Po wgraniu pliku WAR, Tomcat rozpakowuje go i zapisuje jego pliku w nowym podkatalogu w katalogu webapps.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Zadanie 1 - ściągnij Tomcata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
