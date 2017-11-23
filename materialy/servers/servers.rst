@@ -38,7 +38,13 @@ Ustaw ścieżkę do CATALINA_HOME jako wartość zmiennej systemowej *CATALINA_H
 .. admonition:: Wskazówka
 
     Jak zmienić zmienną środowiskową:
-     - w Windows: `<https://www.java.com/pl/download/help/path.xml>`_ (instrukcja dotyczy ustawiania zmiennej Path, my chcemy ustawić CATALINA_HOME)
+     - w Windows: `<https://www.java.com/pl/download/help/path.xml>`_ (instrukcja dotyczy ustawiania zmiennej Path, my chcemy ustawić CATALINA_HOME), albo:
+        
+        .. code:: bat
+
+            set CATALINA_HOME=J:\apache-tomcat-8.5.2
+
+
      - w Linux:
 
         .. code:: bash
@@ -200,14 +206,25 @@ Zatrzymaj i uruchom ponownie serwer i sprawdź, czy teraz aplikacja sample jest 
 Zauważ, że aplikacja została usunięta z katalogu $CATALINA_HOME/webapps/sample i nie ma jej na liście aplikacji w menedżerze Tomcata.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Zadanie 7 - Dodawj nową aplikację
+Zadanie 7 - Dodaj nową aplikację
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Dodawanie nowych aplikacji ("Deployment") odbywa się automatycznie po skopiowaniu ich do katalogu $CATALINA_HOME/webapps/
 Możemy też zrobić to z poziomu menedżera Tomcat.
 
-Poberz paczkę war z przykładową aplikacją z ....
+Ściągnij na dysk pliki
 
-Uruchom aplikację i sprawdź czy działa.
+    http://mw.home.amu.edu.pl/zajecia/PRA2017/SimpleServlet.zip
+
+Wypakuj do katalogu i uruchom Intellij
+
+Wybierz Project -> Open i znajdź wybrany katalog.
+
+Wybierz okienko Mavena odśwież (jeżeli trzeba dodaj plik pom) i wykonaj clean, install.
+
+W oknie drzewa projektu powinien pojawić się katalog target a w nim plik SimpleServlet-1.war.
+
+Skopiuj ten plik do katalogu webapps Tomcata. Sprawdź czy działa wchodząc na link http://localhost:8080/SimpleServlet-1/hello
+
 
 ~~~~~~~~~~~~~~~~~~~~~
 Zadanie 8 - monitoruj
@@ -217,3 +234,46 @@ Obejrzyj logi w $CATALINA_HOME/logs
 Zmień poziom logowania z FINE na FINEST i z INFO na FINE
 
 Zaobserwuj różnice.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 9 - zmień port
+~~~~~~~~~~~~~~~~~~~~~~
+Domyślnie Tomcat uruchamia się na porcie 8080. Jeżeli jakiś inny proces zajmuje już ten port to otrzymamy błąd przy uruchomieniu serwera.
+
+Aby zmienić port wejdź w ustawienia w pliku **server.xml** znajdującego się w $CATALINA_HOME/conf/server.xml.
+
+Zmień port na 8081, uruchom drugi raz Tomcata.
+
+Sprawdź w przeglądarce czy aplikacje działają na porcie 8081? Sprawdź w logach co się stało.
+
+Przerestartuj tomacata, czy teraz uruchomił się na porcie 8080?
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 10 - debugowanie zdeployowanej aplikacji
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Wyłącz Tomcata i włącz korzystając z
+
+.. code:: bash
+
+    export JPDA_ADDRESS=8000
+    export JPDA_TRANSPORT=dt_socket | $CATALINA_HOME/bin/catalina.sh jpda start
+
+
+Na windows :
+
+.. code:: bat
+
+    set JPDA_ADDRESS=8000
+    set JPDA_TRANSPORT=dt_socket
+    bin/catalina.bat jpda start
+
+Address to port do nasłuchiwania przy debugowaniu.
+
+Wróć do InteliJ (projekt SimpleServlet z zadania 7.)
+
+W intellij wybierz **Run -> Debug** następnie **Edit Configurations**, w okienku Wybier z lewej strony plus i opcję **Remote**.
+
+W nowo otwartym oknie zmień port na **8000** i kliknij debug. Od tego momentu jesteś podłączony debugerem do zdeployowanej aplikacji na Tomcat.
+
+Dodaj breakpoint w 16 lini pliku SimpleServlet.java i odśwież stronę. Powinieneś złapać się breakpointem na tej linijce!
