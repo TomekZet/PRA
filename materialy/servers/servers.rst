@@ -47,9 +47,9 @@ Ustaw ścieżkę do CATALINA_HOME jako wartość zmiennej systemowej *CATALINA_H
 
        Jeżeli chemy, żeby zmienna ta była ustawiana automatycznie w każdej konsoli, którą uruchomimy, należy dodać powyższą linijkę do pliku ~/.bashrc
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Zadanie 2 - uruchamianie serwera
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 2 - urucham serwer
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Uruchom serwer Tomcat korzystając ze skryptu $CATALINA_HOME/bin/startup.[sh|bat]
 
@@ -107,26 +107,37 @@ Wyłącz i włącz ponownie Tomcat i sprawdź, czy po ustawieniu *JAVA_HOME* str
     Using CLASSPATH:       /home/tomek/apache-tomcat-8.5.23//bin/bootstrap.jar:/home/tomek/apache-tomcat-8.5.23//bin/tomcat-juli.jar
     Tomcat started.
 
+Jeśli wszystko działa, powinieneś mieć również dostęp do dokumentacji Tomcata, która jest z nim dostarczona i domyślnie udostępniana przez sam serwer: `<http://localhost:8080/docs/index.html>`
 
 --------------------
 Konfiguracja dostępu
 --------------------
+Tomcat umożliwia kontrolę dostępu do aplikacji odpalonych na serwerze. Aplikacje mogą (ale nie muszą) korzystać z metody uwierzytalniania dostarczonych przez Tomcat.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Zadanie 4 - konfiguracja dostępu
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Żeby umożlwić kontrolę dostępu, Tomcat korzysta z bazy danych użytkowników, zwanej *Realm*.
+
+*Realm* zawiera listę nazw użytkowników, ich haseł i ról (*roles*).
+
+Role pozwalają na nadawanie grupom użytkowników uprawnień. Przypominają Linuxowe *grupy* użytkowników.\
+
+Jeden użytkownik może mieć przypisane kilka ról.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 4 - skonfiguruj dostęp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Wejdź na domyślną stronę dostarczoną wraz z Tomcatem: http://localhost:8080/
 
-Kliknij na `"Server Status" <http://localhost:8080/manager/status>`_.
+Spróbuj obejrzeć status serwera klikając na `"Server Status" <http://localhost:8080/manager/status>`_.
 
 Powinno pojawić się okienko pytające o nazwę i hasło użytkownika.
 
 Ze względów bezpieczeństwa Tomcat nie ma zdefiniowanych domyślnych użytkowników.
 
-    Role, które umożliwiają na dostęp do aplikacji Manager są wyjaśnione tutaj: http://localhost:8080/docs/manager-howto.html#Configuring_Manager_Application_Access
+Role, które umożliwiają na dostęp do aplikacji Manager są wyjaśnione tutaj: http://localhost:8080/docs/manager-howto.html#Configuring_Manager_Application_Access
 
-Edytując plik $CATALINA_HOME/conf/tomcat-users.xml dodaj użytkownika "guest", przypisz mu hasło (może byc puste) i dodaj uprawnienie "manager-status":
+Edytując plik $CATALINA_HOME/conf/tomcat-users.xml dodaj użytkownika "guest", przypisz mu hasło (może byc puste) i dodaj rolę "manager-status":
 
 .. code:: xml
 
@@ -149,7 +160,60 @@ Edytując plik $CATALINA_HOME/conf/tomcat-users.xml dodaj użytkownika "guest", 
 Spróbuj jeszcez raz zalogować się do aplikacji `"manager/status" <http://localhost:8080/manager/status>`_.
 
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 5 - zarządzaj, podejście 1.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-~~~~~~~~~
-Zadanie 5
-~~~~~~~~~
+Manager to aplikacja pozwalająca na zarządzanie Tomcatem z poziomu przeglądarki.
+
+Jest ona dostarczona domyślnie uruchamiana wraz z Tomcatem.
+
+Jej częścią jest strona  `Server Status <http://localhost:8080/manager/status>`_, którą odwiedzialiśmy w poprzednim zadaniu.
+
+Spróbuj wejść na stronę menedżera:  http://localhost:8080/manager/html
+
+Ponownie edytuj plik $CATALINA_HOME/conf/tomcat-users.xml tym razem dodając użytkownika *admin* i przypisując mu rolę nadającą uprawnienia dostępu do strony managera.
+
+Sprawdź, czy po zalogowaniu jako admin masz dostęp do menedżera.
+
+Jeśli jesteś zalogowany jako guest, spróbuj w innej przeglądarce albo uruchom ponownie przeglądarkę.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 6 - zarządzaj, podejście 2.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kiedy skonfigurujemy nasz serwer, nie chcemy, by użytkownicy mieli dostęp do przykładowych aplikacji dostarczonych z Tomcatem, dlatego warto je wyłączyć.
+Jedną z takich aplikacji jest aplikacja "sample", którą otwieraliśmy w zadaniu 3. (http://localhost:8080/sample/)
+Spróbujemy teraz wyłączyć tę aplikację.
+
+Wejdź na stronę menedżera:  http://localhost:8080/manager/html
+
+Zatrzymaj ("Stop") aplikację "sample", którą otwierałeś w zadaniu 3. (http://localhost:8080/sample/)
+
+Sprawdź, czy strona jest dostępna.
+
+Zatrzymaj i uruchom ponownie serwer i sprawdź, czy teraz aplikacja sample jest dostępna.
+
+Za pomocą "Undeploy" zatrzymaj i usuń aplikację sample.
+
+Zatrzymaj i uruchom ponownie serwer i sprawdź, czy teraz aplikacja sample jest dostępna.
+
+Zauważ, że aplikacja została usunięta z katalogu $CATALINA_HOME/webapps/sample i nie ma jej na liście aplikacji w menedżerze Tomcata.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Zadanie 7 - Dodawj nową aplikację
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dodawanie nowych aplikacji ("Deployment") odbywa się automatycznie po skopiowaniu ich do katalogu $CATALINA_HOME/webapps/
+Możemy też zrobić to z poziomu menedżera Tomcat.
+
+Poberz paczkę war z przykładową aplikacją z ....
+
+Uruchom aplikację i sprawdź czy działa.
+
+~~~~~~~~~~~~~~~~~~~~~
+Zadanie 8 - monitoruj
+~~~~~~~~~~~~~~~~~~~~~
+Obejrzyj logi w $CATALINA_HOME/logs
+
+Zmień poziom logowania z FINE na FINEST i z INFO na FINE
+
+Zaobserwuj różnice.
