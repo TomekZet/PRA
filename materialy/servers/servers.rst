@@ -71,10 +71,16 @@ Ustaw ścieżkę do CATALINA_HOME jako wartość zmiennej systemowej *CATALINA_H
        Jeżeli chemy, żeby zmienna ta była ustawiana automatycznie w każdej konsoli, którą uruchomimy, należy dodać powyższą linijkę do pliku ~/.bashrc
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Zadanie 2 - urucham serwer
+Zadanie 2 - uruchom serwer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Uruchom serwer Tomcat korzystając ze skryptu $CATALINA_HOME/bin/startup.[sh|bat]
+
+W przypadku błędu "Access denied" wykonaj:
+
+.. code:: bash
+
+    chmod +x $CATALINA_HOME/bin/*.sh
 
 .. code:: bash
 
