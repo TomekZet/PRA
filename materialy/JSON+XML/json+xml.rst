@@ -333,7 +333,7 @@ Strona domowa projektu nie działa, ale projekt jest aktywnie rozwijany na `GitH
 `Zarchiwizowana wersja strony domowej <https://web.archive.org/web/20170801130759/http://wiki.fasterxml.com/JacksonHome>`_.
 
 
-Zadanie 3: Serializacja do JSON
+Zadanie 1: Serializacja do JSON
 --------------------------------
 
 Dodaj bibliotekę Jackson do pom.xml
@@ -350,14 +350,14 @@ Każdemu z pracowników przypisz adres.
 Za pomocą om.fasterxml.jackson.databind.ObjectMapper zapisz (dokonaj serializacji) obiektu przełożonego do pliku json.
 
 
-Zadanie 4: Deserializacja z JSON
+Zadanie 2: Deserializacja z JSON
 --------------------------------
 
 Odtwórz obiekt przełożonego z utworzonego w zdaniu 3. pliku JSON.
 Zmień przełożonemu wynagrodzenie i zapisz (dokonaj serializacji) do pliku json.
 
 
-Zadanie 5: annotacje
+Zadanie 3: annotacje
 --------------------
 
 W języku Java dla zapisu nazwy pól klasy przyjmuje się konwencję notacji `lowerCamelCase <https://pl.wikipedia.org/wiki/CamelCase>`_.
@@ -374,7 +374,7 @@ Dodaj do modelowanych klas annotacje, które zmienią zserializowane nazwy pól 
     Skorzystaj z `dokumentacji <https://github.com/FasterXML/jackson-databind/#annotations-changing-property-names>`_.
 
 
-Zadanie 6: deserializacja typów generycznych
+Zadanie 4: deserializacja typów generycznych
 --------------------------------------------
 
 Stwórz plik json zawierający listę kilku pracowników.
@@ -396,7 +396,7 @@ Aby użyć XML zamiast JSON wystarczy zmienić "ObjectMapper" na XmlMapper":
 
     ObjectMapper xmlMapper = new XmlMapper();
 
-Zadanie: XML
+Zadanie 5: XML
 ------------
 Korzystając z istniejącej klasy JacksonSerialization zmodyfikuj ją, albo stwórz nową klasę tak, żeby umożliwić serializację / deserializację do/z formatu XML.
 Dodaj do katalogu main/resources pliki xml odpowiadające istniejącym już plikom json.
@@ -410,7 +410,7 @@ Dodaj do katalogu main/resources pliki xml odpowiadające istniejącym już plik
 
     Pamiętaj żeby dodać bibliotekę do pom.xml. Odpowiedni wpis znajdziesz w `repozytorium GitHub modułu XML <https://github.com/FasterXML/jackson-dataformat-xml#maven-dependency>`_.
 
-Zadanie: Joda Time
+Zadanie 6: Joda Time
 ------------------
 Dodaj do klasy Employee pole LocalDate birthDate zawierające datę urodzenia pracownika.
 Spróbuj dokonać serializacji a następnie deserializacji obiektu tak zmodyfikowanej klasy.
