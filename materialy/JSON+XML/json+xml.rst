@@ -288,37 +288,37 @@ Uwagi:
  - Podczas deserializacji generycznych typów należy uzyć specjalnej klasy *TypeToken* w celu uzyskania typu wynikowej kolekcji, która zostanie stworzona w wyniku deserializacji ( więcej na ten temat `tutaj <https://github.com/google/gson/blob/master/UserGuide.md#serializing-and-deserializing-generic-types>`_ ).
    
     
-Zadanie 1
----------
-
- Dodaj Gson do pom.xml
-
- .. code:: xml
-
-    <dependencies>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.2</version>
-        </dependency>
-    </dependencies>
-
-
-Zadanie 2
----------
-
-...
+..    Zadanie 1
+      ---------
+  
+       Dodaj Gson do pom.xml
+  
+       .. code:: xml
+  
+          <dependencies>
+              <dependency>
+                  <groupId>log4j</groupId>
+                  <artifactId>log4j</artifactId>
+                  <version>1.2.17</version>
+              </dependency>
+              <dependency>
+                  <groupId>junit</groupId>
+                  <artifactId>junit</artifactId>
+                  <version>4.12</version>
+                  <scope>test</scope>
+              </dependency>
+              <dependency>
+                  <groupId>com.google.code.gson</groupId>
+                  <artifactId>gson</artifactId>
+                  <version>2.8.2</version>
+              </dependency>
+          </dependencies>
+  
+  
+      Zadanie 2
+      ---------
+  
+      ...
 
 Jackson
 ~~~~~~~~~~~
